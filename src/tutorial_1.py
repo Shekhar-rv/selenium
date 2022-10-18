@@ -24,8 +24,8 @@ download_button.click()
 # Find the progress bar and wait for it to be 100%
 WebDriverWait(driver, 15).until(
     EC.text_to_be_present_in_element(
-        (By.CLASS_NAME, "progress-label"), # Element to check
-        "Complete!" # Text to check for
+        (By.CLASS_NAME, "progress-label"),  # Element to check
+        "Complete!",  # Text to check for
     )
 )
 
