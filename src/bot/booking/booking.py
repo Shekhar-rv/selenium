@@ -10,15 +10,24 @@ BROWSER_PATH = config("BROWSER_PATH")
 DRIVER_PATH = config("DRIVER_PATH")
 
 class Booking():
-    def __init__(self, browser_path=BROWSER_PATH, driver_path=DRIVER_PATH, teardown=False):
-        """ This class takes in the path to the browser and the driver and initializes the driver """
+    def __init__(self, browser_path=BROWSER_PATH, 
+    driver_path=DRIVER_PATH, 
+    teardown=False
+    ):
+        """ 
+        This class takes in the path to the browser and the 
+        driver and initializes the driver.
+        """
         self.browser_path = browser_path
         self.driver_path = driver_path
         self.teardown = teardown
         self.options = webdriver.ChromeOptions()
         self.options.binary_location = self.browser_path
         self.chrome_driver_binary = Service(self.driver_path)
-        self.driver = webdriver.Chrome(service=self.chrome_driver_binary, options=self.options)
+        self.driver = webdriver.Chrome(
+            service=self.chrome_driver_binary, 
+            options=self.options
+        )
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
 

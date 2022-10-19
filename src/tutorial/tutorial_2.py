@@ -1,9 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
 
 # Point to where your browser is installed
 options = webdriver.ChromeOptions()
@@ -22,8 +19,8 @@ driver.implicitly_wait(3)
 try:
     no_button = driver.find_element(By.ID, "at-cm-no-button")
     no_button.click()
-except:
-    print("No pop-up found")
+except Exception as ex:
+    print("No pop-up found", ex)
 
 value_1 = driver.find_element(By.ID, "sum1")
 value_2 = driver.find_element(By.ID, "sum2")
@@ -32,5 +29,8 @@ value_1.send_keys("5")
 value_2.send_keys("10")
 
 # Find the get total button using css selector and click it.
-get_total = driver.find_element(By.CSS_SELECTOR, "button[onclick='return total()']")
+get_total = driver.find_element(
+    By.CSS_SELECTOR, 
+    "button[onclick='return total()']"
+)
 get_total.click()
