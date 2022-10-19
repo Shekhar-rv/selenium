@@ -32,7 +32,7 @@ class Booking():
     def land_first_page(self):
         self.driver.get(const.BASE_URL)
 
-    def change_currency(self, currency=None):
+    def change_currency(self, currency:str=None):
         currency_element = self.driver.find_element(
             By.CSS_SELECTOR, 
             'button[data-tooltip-text="Choose your currency"]'
@@ -44,7 +44,7 @@ class Booking():
         )
         selected_currency_element.click()
 
-    def select_destination(self, destination=None):
+    def select_destination(self, destination:str=None):
         destination_element = self.driver.find_element(By.NAME, "ss")
         destination_element.clear()
         destination_element.send_keys(destination)
@@ -54,7 +54,7 @@ class Booking():
         )
         first_suggestion_element.click()
 
-    def select_dates(self, check_in_date=None, check_out_date=None):
+    def select_dates(self, check_in_date:str=None, check_out_date:str=None):
         check_in_element = self.driver.find_element(
             By.CSS_SELECTOR, 
             f'td[data-date="{check_in_date}"]'

@@ -1,17 +1,34 @@
-name: Super-Linter
+name: Lint
 
-on: push
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  super-lint:
-    name: Lint code base
+  run-linters:
+    name: Run linters
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Check out Git repository
         uses: actions/checkout@v2
 
-      - name: Run Super-Linter
-        uses: github/super-linter@v3.17.0
-        env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.10.6
+
+      - name: Install Python dependencies
+        run: pip install black flake8
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          black: true
+          flake8: true
