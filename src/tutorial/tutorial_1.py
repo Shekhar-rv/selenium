@@ -12,9 +12,7 @@ options.binary_location = "/usr/bin/brave-browser"
 # Path to chromedriver driver on your system
 chrome_driver_binary = Service("./selenium_driver/chromedriver")
 driver = webdriver.Chrome(service=chrome_driver_binary, options=options)
-driver.get(
-    "https://demo.seleniumeasy.com/jquery-download-progress-bar-demo.html"
-)
+driver.get("https://demo.seleniumeasy.com/jquery-download-progress-bar-demo.html")
 
 # Wait for 3 seconds to load the page
 driver.implicitly_wait(3)

@@ -29,8 +29,5 @@ value_1.send_keys("5")
 value_2.send_keys("10")
 
 # Find the get total button using css selector and click it.
-get_total = driver.find_element(
-    By.CSS_SELECTOR, 
-    "button[onclick='return total()']"
-)
+get_total = driver.find_element(By.CSS_SELECTOR, "button[onclick='return total()']")
 get_total.click()
