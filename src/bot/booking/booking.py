@@ -6,7 +6,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from booking import constants as const
 from booking.booking_filteration import BookingFilterations
-from selenium.webdriver.common.keys import Keys
 
 
 # Here the code will house a class with instances of the booking
